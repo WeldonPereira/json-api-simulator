@@ -1,20 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f3f4f6;
+  color: #111827;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
 .App {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
   text-align: center;
+  color: #1f2937;
 }
 
-.add-product{
-  border-top: 1px solid black;
+.App p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f9fafb;
+  border-left: 4px solid #3b82f6;
+  border-radius: 6px;
 }
 
-form{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.add-product form {
+  margin-top: 2rem;
 }
 
-form input{
-  display: flex;
-  flex-direction: column;
+.add-product label {
+  display: block;
   margin-bottom: 1rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.add-product input[type="text"],
+.add-product input[type="number"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.25rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.add-product input:focus {
+  border-color: #3b82f6;
+  outline: none;
+  background-color: #fff;
+}
+
+.add-product input[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.add-product input[type="submit"]:hover {
+  background-color: #2563eb;
 }
