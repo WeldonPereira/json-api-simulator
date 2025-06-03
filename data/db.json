@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Camiseta Básica",
+      "price": 39.9
+    },
+    {
+      "id": "2",
+      "name": "Calça Jeans",
+      "price": 119.9
+    },
+    {
+      "id": "3",
+      "name": "Tênis Esportivo",
+      "price": 229.9
+    },
+    {
+      "id": "4",
+      "name": "Mochila Escolar",
+      "price": 89.9
+    },
+    {
+      "id": "2d34",
+      "name": "Lápis",
+      "price": "3"
+    },
+    {
+      "id": "6922",
+      "name": "Capa de chuva",
+      "price": "20"
+    },
+    {
+      "id": "520e",
+      "name": "Caderno",
+      "price": "25"
+    },
+    {
+      "id": "e7ae",
+      "name": "Estojo",
+      "price": "7"
+    }
+  ]
+}
