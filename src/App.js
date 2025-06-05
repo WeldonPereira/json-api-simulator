@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 
-// custom hook - aula 4
 import { useFetch } from "./hooks/useFetch";
 const url = "http://localhost:3000/products";
 
 function App() {
-
-  // custom hook - aula 4
-  const { data: items, httpConfig } = useFetch(url);
+  const { data: items, httpConfig, loading } = useFetch(url);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
 
-  // Adição de produtos -  aula 2
   const handleSubmit = async (e) => {
     e.preventDefault();
     const product = {
@@ -30,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
+      {loading && <p>Carregando dados...</p>}
       {items &&
         items.map((product) => (
           <p key={product.id}>
@@ -58,7 +55,8 @@ function App() {
               required
             />
           </label>
-          <input type="submit" value="adicionar" />
+          {loading && <input type="submit" disabled value="aguarde" />}
+          {!loading && <input type="submit" value="adicionar" />}
         </form>
       </div>
     </div>

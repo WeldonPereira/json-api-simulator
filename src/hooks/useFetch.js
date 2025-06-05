@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 export const useFetch = (url) => {
   const [data, setData] = useState(null);
 
-  // Refatorando o post - aula 5
   const [config, setConfig] = useState(null);
   const [method, setMethod] = useState(null);
   const [callFetch, setCallFetch] = useState(false);
+
+  const [loading, setLoading] = useState(false);
 
   const httpConfig = (data, method) => {
     if (method === "POST") {
@@ -21,14 +22,15 @@ export const useFetch = (url) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       const res = await fetch(url);
       const json = await res.json();
       setData(json);
+      setLoading(false);
     };
     fetchData();
   }, [url, callFetch]);
 
-  // Refatorando o post - aula 5
   useEffect(() => {
     if (method === "POST") {
       const httpRequest = async () => {
@@ -41,5 +43,5 @@ export const useFetch = (url) => {
     }
   }, [config, method, url]);
 
-  return { data, httpConfig };
+  return { data, httpConfig, loading };
 };
