@@ -1,24 +1,17 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+// custom hook - aula 4
+import { useFetch } from "./hooks/useFetch";
+const url = "http://localhost:3000/products";
+
 function App() {
-  const [products, setProducts] = useState([]);
-  const url = "http://localhost:3000/products";
 
-  // Resgatando os dados - aula 1
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("Erro ao buscar produtos:", error);
-      }
-    };
+  // custom hook - aula 4
+  const { data: items, httpConfig } = useFetch(url);
 
-    fetchData();
-  }, []);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
 
   // Adição de produtos -  aula 2
   const handleSubmit = async (e) => {
@@ -28,34 +21,21 @@ function App() {
       price,
     };
 
-    const res = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(product),
-    });
-
-    const addedProduct = await res.json();
-
-    // Carregamento dinâmico - aula 3
-    setProducts((prevProducts) => [...prevProducts, addedProduct]);
+    httpConfig(product, "POST");
 
     setName("");
     setPrice("");
   };
 
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
-      {products.map((product) => (
-        <p key={product.id}>
-          {product.name} - R${product.price}
-        </p>
-      ))}
+      {items &&
+        items.map((product) => (
+          <p key={product.id}>
+            {product.name} - R${product.price}
+          </p>
+        ))}
       <div className="add-product">
         <form onSubmit={handleSubmit}>
           <label>
@@ -65,6 +45,7 @@ function App() {
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
             />
           </label>
           <label>
@@ -74,6 +55,7 @@ function App() {
               name="price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
+              required
             />
           </label>
           <input type="submit" value="adicionar" />
