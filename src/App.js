@@ -1,3 +1,4 @@
+import deleteIcon from "./assets/delete.png";
 import { useState } from "react";
 import "./App.css";
 
@@ -5,7 +6,7 @@ import { useFetch } from "./hooks/useFetch";
 const url = "http://localhost:3000/products";
 
 function App() {
-  const { data: items, httpConfig, loading } = useFetch(url);
+  const { data: items, httpConfig, loading, error } = useFetch(url);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -23,18 +24,28 @@ function App() {
     setPrice("");
   };
 
+  const handleDelete = (id) => {
+    httpConfig(id, "DELETE");
+  };
+
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
       {loading && <p>Carregando dados...</p>}
       {items &&
         items.map((product) => (
-          <p key={product.id}>
+          <p key={product.id} style={{ position: "relative" }}>
             {product.name} - R${product.price}
+            <button
+              className="buttonDelete"
+              onClick={() => handleDelete(product.id)}
+            >
+              <img src={deleteIcon} className="deleteIcon" />
+            </button>
           </p>
         ))}
       <div className="add-product">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete="off">
           <label>
             Nome:
             <input
