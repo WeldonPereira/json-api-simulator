@@ -13,7 +13,7 @@ Este projeto é uma aplicação React simples que permite ao usuário **visualiz
 - ➕ Adicionar novo produto (POST)
 - ❌ Remover produto existente (DELETE)
 - 🔄 Feedback visual durante requisições (loading)
-- ⚠️ Tratamento de erros de requisiçã
+- ⚠️ Tratamento de erros de requisição
 
 ## 🧠 Tecnologias Utilizadas
 
