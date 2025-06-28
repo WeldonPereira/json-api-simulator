@@ -1,4 +1,4 @@
-# 🛒 Lista de Produtos - React + Custom Hoo
+# 🛒 Lista de Produtos - React + Custom Hook
 
 Este projeto é uma aplicação React simples que permite ao usuário **visualizar, adicionar e remover produtos** de uma lista. A aplicação utiliza um **hook personalizado (`useFetch`)** para realizar requisições HTTP (`GET`, `POST`, `DELETE`) a uma API local.
 
